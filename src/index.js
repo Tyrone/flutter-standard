@@ -61,7 +61,7 @@ const hashToRgb = hash => {
 };
 
 const transformUnit = unit => {
-  return (parseInt(unit) / 2).toFixed(2);
+  return (parseInt(unit)).toFixed(2);
 };
 
 module.exports = function(schema, option) {
@@ -154,31 +154,31 @@ module.exports = function(schema, option) {
           mapStyle['backgroundColor'] = hashToRgb(style[key]);
           break;
         case 'borderRadius':
-          mapStyle['borderRadius'] = `BorderRadius.circular(${val})`;
+          mapStyle['borderRadius'] = `BorderRadius.circular(${val}.w)`;
           break;
         case 'marginLeft':
-          flutterMargin[0] = val;
+          flutterMargin[0] =`${val}.w`;
           break;
         case 'marginTop':
-          flutterMargin[1] = val;
+          flutterMargin[1] = `${val}.w`;
           break;
         case 'marginRight':
-          flutterMargin[2] = val;
+          flutterMargin[2] = `${val}.w`;
           break;
         case 'marginBottom':
-          flutterMargin[3] = val;
+          flutterMargin[3] = `${val}.w`;
           break;
         case 'paddingLeft':
-          flutterPadding[0] = val;
+          flutterPadding[0] = `${val}.w`;
           break;
         case 'paddingTop':
-          flutterPadding[1] = val;
+          flutterPadding[1] =  `${val}.w`;
           break;
         case 'paddingRight':
-          flutterPadding[2] = val;
+          flutterPadding[2] =  `${val}.w`;
           break;
         case 'paddingBottom':
-          flutterPadding[3] = val;
+          flutterPadding[3] =  `${val}.w`;
           break;
         case 'height':
         case 'width':
@@ -188,17 +188,17 @@ module.exports = function(schema, option) {
         case 'bottom':
         case 'right':
         case 'left':
-          mapStyle[key] = val;
+          mapStyle[key] =  `${val}.w`;
           break;
       }
     }
     if (flutterMargin.some(val => val > 0)) {
-      mapStyle['margin'] = `const EdgeInsets.fromLTRB(${flutterMargin.join(
+      mapStyle['margin'] = ` EdgeInsets.fromLTRB(${flutterMargin.join(
         ','
       )})`;
     }
     if (flutterPadding.some(val => val > 0)) {
-      mapStyle['padding'] = `const EdgeInsets.fromLTRB(${flutterPadding.join(
+      mapStyle['padding'] = ` EdgeInsets.fromLTRB(${flutterPadding.join(
         ','
       )})`;
     }
